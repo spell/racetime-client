@@ -2,6 +2,15 @@
   "name": "racetime-client",
   "version": "0.1.0",
   "private": true,
+  "description": "A new, modern frontend for racetime.gg",
+  "license": "GPL-3.0+",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spell/racetime-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/spell/racetime-client/issues"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
