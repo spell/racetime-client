@@ -1,7 +1,23 @@
-import '../styles/globals.scss'
+import React from "react";
+import Navigation from "../components/navigation";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import "../styles/globals.scss";
+import "../styles/ui.scss";
+import Footer from "../components/footer";
+
+export default function MyApp({Component, pageProps}) {
+    return (
+        <div id="application">
+            <nav>
+                <Navigation/>
+            </nav>
+            <main>
+                <Component {...pageProps} />
+            </main>
+            <footer>
+                <Footer />
+            </footer>
+        </div>
+    );
 }
 
-export default MyApp
