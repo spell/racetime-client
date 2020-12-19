@@ -4,20 +4,23 @@ import Navigation from "../components/navigation";
 import "../styles/globals.scss";
 import "../styles/ui.scss";
 import Footer from "../components/footer";
+import AuthProvider from "../components/user/auth-provider";
 
 export default function MyApp({Component, pageProps}) {
     return (
-        <div id="application">
-            <nav>
-                <Navigation/>
-            </nav>
-            <main>
-                <Component {...pageProps} />
-            </main>
-            <footer>
-                <Footer />
-            </footer>
-        </div>
+        <AuthProvider>
+            <div id="application">
+                <nav>
+                    <Navigation/>
+                </nav>
+                <main>
+                    <Component {...pageProps} />
+                </main>
+                <footer>
+                    <Footer/>
+                </footer>
+            </div>
+        </AuthProvider>
     );
 }
 

@@ -14,7 +14,7 @@ export default function Navigation() {
                     <span className={styles.name}>racetime.gg</span>
                 </div>
             </a></Link>
-            <div className={styles.item}>Categories</div>
+            <div className={styles.item}><Link href="/categories">Categories</Link></div>
             <div className={styles.item}>Races</div>
             <span className={styles.spacer}/>
             <div className={styles.profile}>
