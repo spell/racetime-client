@@ -1,6 +1,7 @@
 import React from "react";
 import Navigation from "../components/navigation";
 
+import "tailwindcss/tailwind.css";
 import "../styles/globals.scss";
 import "../styles/ui.scss";
 import Footer from "../components/footer";

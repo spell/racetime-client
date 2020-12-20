@@ -48,7 +48,8 @@
 }
 
 .cardCarousel {
-  @apply flex flex-row flex-wrap;
+  @apply flex flex-row flex-nowrap;
+  @apply overflow-x-hidden;
 }
 
 .card {

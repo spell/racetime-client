@@ -4,8 +4,17 @@ import React from 'react';
 
 import styles from "../styles/pages/home.module.scss";
 import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
+import {GetServerSideProps} from "next";
+import Axios from "axios";
+import {Category} from "../lib/category";
+import {RacesData} from "../lib/race";
+import CategoryCard from "../components/category/category-card";
 
-export default function Home() {
+interface HomeProps {
+    popularCategories: Category[];
+}
+
+export default function Home(props: HomeProps) {
     return (
         <div>
             <div className={styles.greeting}>
@@ -25,11 +34,9 @@ export default function Home() {
             <div className={styles.popularCategories}>
                 <h2 className={styles.smallHeading}>Popular categories</h2>
                 <div className={styles.cardCarousel}>
-                    <div className={styles.card} style={{backgroundImage: "url('/fixtures/alttpr.png')"}} />
-                    <div className={styles.card} style={{backgroundImage: "url('/fixtures/zootr.png')"}}/>
-                    <div className={styles.card} style={{backgroundImage: "url('/fixtures/oot.jpg')"}} />
-                    <div className={styles.card} style={{backgroundImage: "url('/fixtures/mmr.jpg')"}} />
-                    <div className={styles.card} style={{backgroundImage: "url('/fixtures/twwr.jpg')"}} />
+                    {props.popularCategories.map((category, index) =>
+                        <CategoryCard key={index} category={category} label />
+                    )}
                 </div>
                 <div className={styles.explore}>
                     <Link href="/category"><a>Explore all categories <FontAwesomeIcon icon={faArrowRight} /></a></Link>
@@ -38,3 +45,21 @@ export default function Home() {
         </div>
     )
 }
+
+interface CategoryListResponse {
+    count: number;
+    next?: string;
+    previous?: string;
+    results: Category[];
+}
+
+export const getServerSideProps: GetServerSideProps<HomeProps> = async (context) => {
+    const response = await Axios.get<CategoryListResponse>(`${process.env.NEXT_PUBLIC_API_SERVER}/categories`);
+
+    return {
+        props: {
+            popularCategories: response.data.results,
+        }
+    };
+}
+
