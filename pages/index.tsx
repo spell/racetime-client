@@ -9,6 +9,7 @@ import Axios from "axios";
 import {Category} from "../lib/category";
 import {RacesData} from "../lib/race";
 import CategoryCard from "../components/category/category-card";
+import {PaginatedResponse} from "../lib/api";
 
 interface HomeProps {
     popularCategories: Category[];
@@ -34,8 +35,8 @@ export default function Home(props: HomeProps) {
             <div className={styles.popularCategories}>
                 <h2 className={styles.smallHeading}>Popular categories</h2>
                 <div className={styles.cardCarousel}>
-                    {props.popularCategories.map((category, index) =>
-                        <CategoryCard key={index} category={category} label />
+                    {props.popularCategories.map(category =>
+                        <CategoryCard key={category.slug} category={category} label />
                     )}
                 </div>
                 <div className={styles.explore}>
@@ -46,15 +47,8 @@ export default function Home(props: HomeProps) {
     )
 }
 
-interface CategoryListResponse {
-    count: number;
-    next?: string;
-    previous?: string;
-    results: Category[];
-}
-
 export const getServerSideProps: GetServerSideProps<HomeProps> = async (context) => {
-    const response = await Axios.get<CategoryListResponse>(`${process.env.NEXT_PUBLIC_API_SERVER}/categories`);
+    const response = await Axios.get<PaginatedResponse<Category>>(`${process.env.NEXT_PUBLIC_API_SERVER}/categories`);
 
     return {
         props: {
