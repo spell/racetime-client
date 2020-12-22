@@ -6,13 +6,12 @@ import styles from "../styles/pages/home.module.scss";
 import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {GetServerSideProps} from "next";
 import Axios from "axios";
-import {Category} from "../lib/category";
-import {RacesData} from "../lib/race";
+import {CategoryStats} from "../lib/category";
 import CategoryCard from "../components/category/category-card";
 import {PaginatedResponse} from "../lib/api";
 
 interface HomeProps {
-    popularCategories: Category[];
+    popularCategories: CategoryStats[];
 }
 
 export default function Home(props: HomeProps) {
@@ -48,7 +47,9 @@ export default function Home(props: HomeProps) {
 }
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async (context) => {
-    const response = await Axios.get<PaginatedResponse<Category>>(`${process.env.NEXT_PUBLIC_API_SERVER}/categories`);
+    const response = await Axios.get<PaginatedResponse<CategoryStats>>(
+        `${process.env.NEXT_PUBLIC_API_SERVER}/categories/stats?ordering=-race_count,-current_race_count,name`
+    );
 
     return {
         props: {

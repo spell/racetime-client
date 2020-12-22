@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import {Category} from "../../lib/category";
+import {Category, isCategoryStats} from "../../lib/category";
 
 import styles from "../../styles/components/category/category-card.module.scss";
 
@@ -25,6 +25,8 @@ export default function CategoryCard(props: CategoryCardProps) {
                     {props.label &&
                     <span title={props.category.name} className={styles.name}>{props.category.name}</span>}
                 </div>
+                {isCategoryStats(props.category) &&
+                <div className={styles.countLabel}>{props.category.race_count} races ({props.category.current_race_count} active)</div>}
             </div>
         </a></Link>
     );
