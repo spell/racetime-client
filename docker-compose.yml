@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  app:
+    image: node:current-alpine
+    command: sh -c "yarn install && yarn run dev"
+    ports:
+      - 3000:3000
+    working_dir: /opt/racetime-client
+    volumes:
+      - ./:/opt/racetime-client/

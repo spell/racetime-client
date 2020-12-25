@@ -32,6 +32,8 @@
   "devDependencies": {
     "@types/node": "^14.14.14",
     "@types/react": "^17.0.0",
+    "autoprefixer": "^10.1.0",
+    "postcss": "^8.2.1",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^6.7.0",
     "sass": "^1.30.0",
