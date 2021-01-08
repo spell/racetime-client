@@ -1,12 +1,12 @@
 import React from "react";
-import {Category} from "../../lib/category";
+import {CategoryDetail} from "../../lib/category";
 
 import styles from "../../styles/components/category/category-header.module.scss";
 import InlineUserProfile from "../user/inline-user-profile";
 
 
 interface CategoryHeaderProps {
-    category: Category;
+    category: CategoryDetail;
 }
 
 export default function CategoryHeader(props: CategoryHeaderProps) {

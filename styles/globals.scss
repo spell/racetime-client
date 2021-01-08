@@ -1,22 +1,23 @@
 body {
-  @apply bg-gray-900;
-  @apply text-white;
+    @apply bg-gray-900;
+    @apply text-white;
+    @apply h-screen w-screen max-w-full;
 }
 
 #application {
-  @apply flex flex-col items-center;
-  @apply h-screen w-screen;
+    @apply flex flex-col items-center;
+    @apply min-h-screen w-full;
 }
 
 nav {
-  @apply w-screen;
+    @apply w-full;
 }
 
 main {
-  @apply w-screen px-2 lg:px-0 lg:w-3/5 flex-1;
+    @apply w-full px-2 lg:px-0 lg:w-3/5 flex-1;
 }
 
 footer {
-  @apply bg-green-900;
-  @apply w-screen;
+    @apply bg-green-900;
+    @apply w-full;
 }

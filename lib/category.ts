@@ -2,7 +2,6 @@ import {User} from "./user";
 import {Race} from "./race";
 
 export interface Category {
-    url: string;
     name: string;
     short_name: string;
     slug: string;
@@ -16,7 +15,6 @@ export interface CategoryDetail extends Category {
 }
 
 export interface CategoryStats extends Category {
-    archived: boolean;
     race_count: number;
     current_race_count: number;
     open_race_count: number;

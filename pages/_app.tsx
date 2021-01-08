@@ -1,27 +1,56 @@
 import React from "react";
+import cookie from "cookie";
 import Navigation from "../components/navigation";
+
+import { SSRKeycloakProvider, SSRCookies } from "@react-keycloak/ssr";
 
 import "tailwindcss/tailwind.css";
 import "../styles/globals.scss";
 import "../styles/ui.scss";
 import Footer from "../components/footer";
-import AuthProvider from "../components/user/auth-provider";
+import { AppProps } from "next/app";
+import { GetServerSideProps } from "next";
+import { IncomingMessage } from "http";
 
-export default function MyApp({Component, pageProps}) {
+const keycloakConfig = {
+    realm: process.env.NEXT_PUBLIC_KEYCLOAK_REALM,
+    url: process.env.NEXT_PUBLIC_KEYCLOAK_SERVER,
+    clientId: process.env.NEXT_PUBLIC_KEYCLOAK_CLIENT_ID,
+}
+
+interface InitialProps {
+    cookies: unknown;
+}
+
+export default function MyApp({ Component, pageProps, cookies }: AppProps & InitialProps) {
     return (
-        <AuthProvider>
+        <SSRKeycloakProvider persistor={SSRCookies(cookies)} keycloakConfig={keycloakConfig}>
             <div id="application">
                 <nav>
-                    <Navigation/>
+                    <Navigation />
                 </nav>
                 <main>
                     <Component {...pageProps} />
                 </main>
                 <footer>
-                    <Footer/>
+                    <Footer />
                 </footer>
             </div>
-        </AuthProvider>
+        </SSRKeycloakProvider>
     );
 }
 
+const parseCookies = (req?: IncomingMessage) => {
+    if (!req || !req.headers) {
+        return {};
+    }
+    return cookie.parse(req.headers.cookie || '');
+}
+
+export const getServerSideProps: GetServerSideProps<InitialProps> = async context => {
+    return {
+        props: {
+            cookies: parseCookies(context.req),
+        }
+    }
+}

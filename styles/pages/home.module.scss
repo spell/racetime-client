@@ -1,69 +1,67 @@
 .greeting {
-  @apply flex flex-row;
-  @apply my-14;
+    @apply flex flex-row;
+    @apply my-14;
 
-  p {
-    @apply text-green-300;
-    @apply my-6;
-  }
+    p {
+        @apply text-green-300;
+        @apply my-6;
+    }
 }
 
 .brand {
-  @apply text-white font-semibold;
+    @apply text-white font-semibold;
 }
 
 .left {
-  @apply w-3/5;
-  @apply max-w-xl;
 }
 
 .heading {
-  @apply font-semibold text-5xl;
-  @apply mb-4;
+    @apply font-semibold text-5xl;
+    @apply mb-4;
 }
 
 .cta {
-  @apply rounded-md font-semibold text-xl;
-  @apply bg-red-700 hover:bg-red-600 transition;
-  @apply px-4 py-2.5;
+    @apply rounded-md font-semibold text-xl;
+    @apply bg-red-700 hover:bg-red-600 transition;
+    @apply px-4 py-2.5;
 }
 
 .brandLogo {
-  @apply flex justify-center items-center;
-  min-width: 256px;
+    @apply hidden lg:flex;
+    @apply justify-center items-center;
+    @apply w-2/5;
 
-  img {
-    @apply px-16;
-    min-width: 256px;
-    min-height: 256px;
-  }
+    img {
+        @apply min-w-min;
+    }
 }
 
 .spacer {
-  @apply flex-grow;
+    @apply flex-grow;
 }
 
 .smallHeading {
-  @apply text-xl font-semibold;
+    @apply text-xl font-semibold;
 }
 
 .cardCarousel {
-  @apply flex flex-row flex-nowrap;
-  @apply overflow-x-hidden;
+    @apply grid grid-cols-2  lg:grid-cols-5;
+    @apply grid gap-1 lg:gap-2 w-full;
+    @apply overflow-x-hidden;
 }
 
 .card {
-  @apply bg-cover bg-center;
-  @apply rounded-lg;
-  @apply bg-white;
-  @apply min-w-min w-44 h-64;
-  @apply m-2;
+    @apply bg-cover bg-center;
+    @apply rounded-lg;
+    @apply bg-white;
+    @apply min-w-min w-44 h-64;
+    @apply m-2;
 
-  @apply border-2 border-green-400 hover:border-green-200;
-  @apply cursor-pointer;
+    @apply border-2 border-green-400 hover:border-green-200;
+    @apply cursor-pointer;
 }
 
 .explore {
-  @apply text-green-400 hover:text-green-200 text-lg;
-  @apply text-right;
+    @apply text-green-400 hover:text-green-200 text-lg;
+    @apply text-right;
 }

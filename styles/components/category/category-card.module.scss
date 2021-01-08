@@ -1,35 +1,37 @@
 .shell {
-  @apply w-48;
-  @apply m-2;
-  @apply text-white hover:text-green-300 transition;
-  @apply cursor-pointer;
+    @apply text-white hover:text-green-300 transition;
+    @apply cursor-pointer;
+}
+
+.aspectRatioShell {
+    padding-top: 380px / 285px * 100%;
+    @apply relative;
 }
 
 .card {
-  @apply h-64 w-48;
-  @apply border-4 border-green-400 hover:border-green-300 rounded-lg;
-  @apply text-green-400 hover:text-green-300;
-  @apply bg-green-800 hover:bg-green-700;
-  @apply flex flex-row items-center;
-  @apply overflow-hidden;
-  @apply transition;
-  @apply bg-cover bg-center;
-  @apply select-none;
+    @apply absolute top-0 left-0 w-full h-full;
+    @apply border-4 border-green-400 hover:border-green-300 rounded-lg;
+    @apply text-green-400 hover:text-green-300;
+    @apply bg-green-800 hover:bg-green-700;
+    @apply flex flex-row items-center;
+    @apply overflow-hidden;
+    @apply transition;
+    @apply bg-cover bg-center;
+    @apply select-none;
 }
 
 .label {
-  @apply w-48;
-  @apply truncate;
+    @apply truncate;
 }
 
 .name {
-  @apply text-lg font-semibold;
+    @apply text-lg font-semibold;
 }
 
 .shortName {
-  @apply text-5xl font-semibold text-center w-full;
+    @apply text-5xl font-semibold text-center w-full;
 }
 
 .countLabel {
-  @apply truncate text-green-200;
+    @apply truncate text-green-200;
 }
